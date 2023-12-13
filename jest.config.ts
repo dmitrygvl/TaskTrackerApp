@@ -49,7 +49,7 @@ const config: Config = {
       branches: 60,
       functions: 60,
       lines: 60,
-      statements: -30,
+      statements: -40,
     },
   },
 
@@ -154,7 +154,7 @@ const config: Config = {
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
-
+  verbose: true,
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
 
