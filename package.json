@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "prettier --check . && eslint . --ext .js,.ts && stylelint \"**/*.scss\" && npx tsc --noEmit",
-    "lint:fix": "prettier --write . && eslint . --ext .js,.ts --fix  && stylelint \"**/*.scss\" --fix && npx tsc --noEmit",
+    "lint": "prettier --check . && eslint . && stylelint \"**/*.scss\" && npx tsc --noEmit",
+    "lint:fix": "prettier --write . && eslint . --fix  && stylelint \"**/*.scss\" --fix && npx tsc --noEmit",
     "prepare": "husky install",
     "check-ts": "tsc --noEmit",
     "start": "webpack serve --mode development",
