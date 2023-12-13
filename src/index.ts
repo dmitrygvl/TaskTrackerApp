@@ -1,5 +1,4 @@
 import "./styles/style.scss";
+import { sumTs } from "./modules/sum";
 
-export function sumTs(a: number, b: number) {
-  return a + b;
-}
+sumTs(2, 4);
