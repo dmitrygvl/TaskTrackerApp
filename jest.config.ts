@@ -97,7 +97,11 @@ const config: Config = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|scss|less)$": "<rootDir>/__mocks__/styleMock.js",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -182,12 +186,16 @@ const config: Config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  // transform: {
+  //   "^.+\\.js$": "babel-jest",
+  //   ".+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$":
+  //     "jest-transform-stub",
+  // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   "\\.pnp\\.[^\\/]+$",
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

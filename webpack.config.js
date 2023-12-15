@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     clean: true,
-    filename: "[name].bundle.[chunkhash].ts",
+    filename: "[name].bundle.[chunkhash].js",
     path: path.resolve(__dirname, "./dist"),
   },
   resolve: {
