@@ -1,4 +1,10 @@
-import "./styles/style.scss";
-import { sumTs } from "./modules/sum";
+import "normalize.css";
+import { runApp } from "./modules/runApp";
+import { renderHeader } from "./modules/components/header/renderHeader";
 
-sumTs(2, 4);
+const header = document.getElementById("header") as HTMLElement;
+// const app = document.getElementById("app") as HTMLElement;
+
+renderHeader(header);
+
+// runApp(header)

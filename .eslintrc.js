@@ -41,6 +41,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-promise-executor-return": "off",
     "no-unused-vars": "off",
+    "no-param-reassign": ["error", { props: false }],
     "no-plusplus": "off",
     "no-shadow": "off",
     "@typescript-eslint/no-explicit-any": "off",

@@ -68,5 +68,9 @@
     ],
     "*.{css,scss,md,yml, json, html}": "prettier . --write",
     "*.{css, scss}": "stylelint --fix"
+  },
+  "dependencies": {
+    "core-js": "^3.34.0",
+    "normalize.css": "^8.0.1"
   }
 }
