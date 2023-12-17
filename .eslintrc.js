@@ -40,6 +40,7 @@ module.exports = {
     "@typescript-eslint/no-var-requires": 0,
     "import/prefer-default-export": "off",
     "no-promise-executor-return": "off",
+    "class-methods-use-this": "off",
     "no-unused-vars": "off",
     "no-param-reassign": ["error", { props: false }],
     "no-plusplus": "off",

@@ -1,6 +1,6 @@
-import { Task, TaskCRUD, TasksFilter } from "./types";
+import { Task, TaskTrackerCRUD, TasksFilter } from "./types";
 
-export class workWithLocalStorage implements TaskCRUD {
+export class workWithLocalStorage implements TaskTrackerCRUD {
   private namespace: string;
 
   constructor(namespace: string) {

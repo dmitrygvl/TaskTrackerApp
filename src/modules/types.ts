@@ -18,7 +18,7 @@ export interface TasksFilter {
   tags?: string[];
 }
 
-export interface TaskCRUD {
+export interface TaskTrackerCRUD {
   getTasks(taskFilter?: TasksFilter): Promise<Task[]>;
   setTask(task: Task): Promise<void>;
   deleteTask(taskId: string): Promise<boolean>;
