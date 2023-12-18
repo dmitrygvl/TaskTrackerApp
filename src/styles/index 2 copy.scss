@@ -23,6 +23,13 @@ select {
   }
 }
 
+button {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
 .task-list {
   list-style-type: none;
   padding: 0;
@@ -41,6 +48,14 @@ select {
   margin-bottom: 5px;
 }
 
+.task-text {
+  width: 500px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
 .task-form {
   display: flex;
   flex-flow: row wrap;
@@ -50,12 +65,20 @@ select {
   padding: 10px;
 }
 
-.task-text {
-  width: 500px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
+.edit-btn {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  background: #f0ad4e;
+  color: white;
   border-radius: 4px;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background: #ec971f;
+  }
 }
 
 #add-update-task-btn {
@@ -72,6 +95,20 @@ select {
   &::hover {
     background: #286090;
     border-color: #204d74;
+  }
+}
+
+.delete-btn {
+  padding: 5px 10px;
+  margin-left: 10px;
+  background: #d9534f;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background: #c9302c;
   }
 }
 
@@ -94,5 +131,30 @@ select {
       background: #286090;
       border-color: #204d74;
     }
+  }
+}
+
+.task-item-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #eee;
+  margin-top: 5px;
+  gap: 10px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+@media (width <= 540px) {
+  .task-item-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task-form {
+    max-width: 100%;
+    min-width: 0;
+    flex-direction: column;
   }
 }

@@ -1,4 +1,4 @@
-import { TaskTrackerCRUD, Task, TasksFilter } from "./types";
+import { TaskTrackerCRUD, Task, TasksFilter } from './types';
 
 export class TaskTrackerAPI {
   private localTaskTracker: TaskTrackerCRUD;
@@ -26,19 +26,34 @@ export class TaskTrackerAPI {
   }
 
   async saveTask(task: Task): Promise<void> {
-    if (task.text === "") {
+    if (task.text === '') {
       return;
     }
     await this.localTaskTracker.setTask(task);
   }
 
-  public taskFilter(task: Task, filter: TasksFilter): boolean {
-    const tagsFilter =
-      filter.tags?.map((tag) => tag.trim().toLowerCase()) ?? [];
-    const dateFilter = !filter.date || task.date === filter.date;
-    const statusFilter = !filter.status || task.status === filter.status;
+  // public taskFilter(task: Task, filter: TasksFilter): boolean {
+  //   const tagsFilter =
+  //     filter.tags?.map((tag) => tag.trim().toLowerCase()) ?? [];
+  //   const dateFilter = !filter.date || task.date === filter.date;
+  //   const statusFilter = !filter.status || task.status === filter.status;
 
-    return tagsFilter && dateFilter && statusFilter;
+  //   return tagsFilter && dateFilter && statusFilter;
+  // }
+
+  public taskFilter(task: Task, filter: TasksFilter): boolean {
+    const tagsToCompare =
+      filter.tags?.map((tag) => tag.trim().toLowerCase()) ?? [];
+
+    const dateMatches = !filter.date || task.date === filter.date;
+    const statusMatches = !filter.status || task.status === filter.status;
+    const tagsMatches =
+      tagsToCompare.length === 0 ||
+      tagsToCompare.some((filterTag) =>
+        task.tags.some((taskTag) => taskTag.toLowerCase().includes(filterTag)),
+      );
+
+    return dateMatches && statusMatches && tagsMatches;
   }
 
   public generateTaskId() {

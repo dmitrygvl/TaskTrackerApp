@@ -15,10 +15,10 @@ export function renderAppUI(rootEl: HTMLElement) {
         <input
           type="text"
           id="filterTags"
-          placeholder="By tags (comma-separated)"
+          placeholder="By tags"
         />
         
-        <button id="filterTasksBtn">Filter tasks</button>
+        <button class="filters__btn" id="filterTasksBtn">Filter tasks</button>
       </div>
       <div class="task-form">
         
@@ -28,7 +28,7 @@ export function renderAppUI(rootEl: HTMLElement) {
           <option value="in progress">In Progress</option>
           <option value="done">Done</option>
         </select>
-        <input type="text" id="taskTags" placeholder="Tags (comma-separated)" />
+        <input type="text" id="taskTags" placeholder="Tags" />
         <input
           id="taskText"
           class="task-text"
