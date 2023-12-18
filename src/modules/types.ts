@@ -1,22 +1,26 @@
-const enum TaskStatus {
-  New = "New",
-  InWork = "In work",
-  Done = "Done",
-}
+// const enum TaskStatus {
+//   New = "New",
+//   InWork = "In work",
+//   Done = "Done",
+// }
 
-export interface Task {
+// export type TaskStatus = {
+//   status: 'New' | 'In work' | 'Done';
+// }
+
+export type Task = {
   id: string;
   text: string;
   date: string;
-  status: TaskStatus;
+  status: "New" | "In work" | "Done";
   tags: string[];
-}
+};
 
-export interface TasksFilter {
+export type TasksFilter = {
   date?: string;
-  status?: TaskStatus;
+  status?: "New" | "In work" | "Done";
   tags?: string[];
-}
+};
 
 export interface TaskTrackerCRUD {
   getTasks(taskFilter?: TasksFilter): Promise<Task[]>;

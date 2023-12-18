@@ -5,9 +5,9 @@ export function renderAppUI(rootEl: HTMLElement) {
           <h1>Task Calendar</h1>
         </header>
       <div class="filters">
-       
+      <h2>Filters</h2>
         <input type="date" id="filterDate" />
-        <select id="filterStatus">
+        <select id="filterProgress">
           <option value="new">New</option>
           <option value="in progress">In Progress</option>
           <option value="done">Done</option>
@@ -18,12 +18,12 @@ export function renderAppUI(rootEl: HTMLElement) {
           placeholder="By tags (comma-separated)"
         />
         
-        <button id="applyFiltersButton">Apply Filters</button>
+        <button id="filterTasksBtn">Filter tasks</button>
       </div>
       <div class="task-form">
         
         <input type="date" id="taskDate" />
-        <select id="taskStatus">
+        <select id="taskProgress">
           <option value="new">New</option>
           <option value="in progress">In Progress</option>
           <option value="done">Done</option>
@@ -32,11 +32,11 @@ export function renderAppUI(rootEl: HTMLElement) {
         <input
           id="taskText"
           class="task-text"
+          autofocus
           placeholder="Enter your task"
-        ></input>
-        <button id="add-update-task">Add/Update Task</button>
-        <!-- <button id="loadFromFirebaseButton">Load Tasks from Firebase</button> -->
-        <!-- <button id="loadFromLocalButton">Load from Local</button> -->
+          
+          ></input>
+        <button type="submit" id="add-update-task-btn">Add/Update Task</button>
       </div>
       <ul class="task-list" id="taskList"></ul>
     </div>

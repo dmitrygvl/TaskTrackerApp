@@ -1,6 +1,6 @@
 import { TaskTrackerCRUD, Task, TasksFilter } from "./types";
 
-export class TaskTracker {
+export class TaskTrackerAPI {
   private localTaskTracker: TaskTrackerCRUD;
 
   constructor(localTaskTracker: TaskTrackerCRUD) {
@@ -18,6 +18,18 @@ export class TaskTracker {
       const task = await this.getTaskById(taskId);
     }
     return success;
+  }
+
+  async getSavedTasks(): Promise<Task[]> {
+    const savedTasks = await this.localTaskTracker.getTasks();
+    return [...savedTasks];
+  }
+
+  async saveTask(task: Task): Promise<void> {
+    if (task.text === "") {
+      return;
+    }
+    await this.localTaskTracker.setTask(task);
   }
 
   public taskFilter(task: Task, filter: TasksFilter): boolean {
