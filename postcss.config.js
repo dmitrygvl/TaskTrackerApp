@@ -1,9 +1,9 @@
 module.exports = {
-  syntax: "postcss-scss",
+  syntax: 'postcss-scss',
   plugins: {
-    "postcss-import": {},
+    'postcss-import': {},
     autoprefixer: {},
-    "postcss-preset-env": {},
+    'postcss-preset-env': {},
     cssnano: {},
   },
 };
