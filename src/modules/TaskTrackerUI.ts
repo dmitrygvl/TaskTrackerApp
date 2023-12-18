@@ -45,7 +45,7 @@ export class TaskTrackerUI {
       id: taskId,
       text: taskTextInput.value,
       date: taskDateInput.value,
-      status: taskProgressSelect.value as 'New' | 'In work' | 'Done',
+      status: taskProgressSelect.value as 'New' | 'In progress' | 'Done',
       tags: taskTagsInput.value.split(',').map((tag) => tag.trim()),
     };
 
@@ -55,9 +55,6 @@ export class TaskTrackerUI {
   }
 
   public async filterTasks(): Promise<void> {
-    // const filterTextElement = document.getElementById(
-    //   "filterText",
-    // ) as HTMLInputElement;
     const filterDateElement = document.getElementById(
       'filterDate',
     ) as HTMLInputElement;
@@ -71,7 +68,7 @@ export class TaskTrackerUI {
     const filter: TasksFilter = {
       date: filterDateElement.value || undefined,
       status:
-        (filterProgressElement.value as 'New' | 'In work' | 'Done') ||
+        (filterProgressElement.value as 'New' | 'In progress' | 'Done') ||
         undefined,
 
       tags: filterTagsElement.value

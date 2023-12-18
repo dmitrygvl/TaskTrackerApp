@@ -15,7 +15,6 @@ exports[`renderAppUI renders main UI with filters and task form 1`] = `
           <option value="done">Done</option>
         </select>
         <input type="text" id="filterTags" placeholder="By tags">
-        
         <button class="filters__btn" id="filterTasksBtn">Filter tasks</button>
       </div>
       <div class="task-form">

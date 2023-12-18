@@ -17,7 +17,6 @@ export function renderAppUI(rootEl: HTMLElement) {
           id="filterTags"
           placeholder="By tags"
         />
-        
         <button class="filters__btn" id="filterTasksBtn">Filter tasks</button>
       </div>
       <div class="task-form">

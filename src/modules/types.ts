@@ -2,13 +2,13 @@ export type Task = {
   id: string;
   text: string;
   date: string;
-  status: 'New' | 'In work' | 'Done';
+  status: 'New' | 'In progress' | 'Done';
   tags: string[];
 };
 
 export type TasksFilter = {
   date?: string;
-  status?: 'New' | 'In work' | 'Done';
+  status?: 'New' | 'In progress' | 'Done';
   tags?: string[];
 };
 

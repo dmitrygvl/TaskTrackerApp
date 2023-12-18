@@ -7,11 +7,6 @@ export class WorkWithLocalStorage implements TaskTrackerCRUD {
     this.namespace = namespace;
   }
 
-  // public async getTasks(): Promise<Task[]> {
-  //   const tasks = localStorage.getItem(this.namespace);
-  //   return tasks ? JSON.parse(tasks) : [];
-  // }
-
   public async getTasks(taskFilter?: TasksFilter): Promise<Task[]> {
     const tasks = await this.getTasksFromLocalStorage();
 
