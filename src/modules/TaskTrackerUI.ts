@@ -158,5 +158,3 @@ export class TaskTrackerUI {
       .dataset.editingId;
   }
 }
-
-export default TaskTrackerUI;

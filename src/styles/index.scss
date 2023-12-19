@@ -14,7 +14,7 @@ select {
   background: #fff;
   box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
 
-  &::placeholder {
+  ::placeholder {
     color: #667085;
     font-size: 16px;
     font-style: normal;
@@ -67,11 +67,6 @@ select {
   background: #6941c6;
   box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
   border-color: #2e6da4;
-
-  &::hover {
-    background: #286090;
-    border-color: #204d74;
-  }
 }
 
 .filters__btn {
@@ -83,11 +78,6 @@ select {
   box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
   border-color: #2e6da4;
   color: #fff;
-
-  &::hover {
-    background: #286090;
-    border-color: #204d74;
-  }
 }
 
 .filters {
@@ -95,22 +85,6 @@ select {
   background: #eee;
   padding: 15px;
   border-radius: 4px;
-
-  &__btn {
-    cursor: pointer;
-    border-radius: 15px;
-    padding: 12px 14px 12px 16px;
-    border: 1px solid #d0d5dd;
-    background: #6941c6;
-    box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
-    border-color: #2e6da4;
-    color: #fff;
-
-    &::hover {
-      background: #286090;
-      border-color: #204d74;
-    }
-  }
 }
 
 .task-item-flex {
@@ -147,11 +121,6 @@ select {
   box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
   border-color: #2e6da4;
   color: #0f0c0c;
-
-  &::hover {
-    background: #286090;
-    border-color: #204d74;
-  }
 }
 
 .delete-btn {
