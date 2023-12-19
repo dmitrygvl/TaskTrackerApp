@@ -32,15 +32,6 @@ export class TaskTrackerAPI {
     await this.localTaskTracker.setTask(task);
   }
 
-  // public taskFilter(task: Task, filter: TasksFilter): boolean {
-  //   const tagsFilter =
-  //     filter.tags?.map((tag) => tag.trim().toLowerCase()) ?? [];
-  //   const dateFilter = !filter.date || task.date === filter.date;
-  //   const statusFilter = !filter.status || task.status === filter.status;
-
-  //   return tagsFilter && dateFilter && statusFilter;
-  // }
-
   public taskFilter(task: Task, filter: TasksFilter): boolean {
     const tagsToCompare =
       filter.tags?.map((tag) => tag.trim().toLowerCase()) ?? [];
