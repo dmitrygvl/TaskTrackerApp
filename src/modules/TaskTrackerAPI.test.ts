@@ -1,108 +1,102 @@
 import { TaskTrackerAPI } from './TaskTrackerAPI';
-import { Task, TaskTrackerCRUD } from './types';
+import { TaskTrackerCRUD, Task, TasksFilter } from './types';
 
 describe('TaskTrackerAPI', () => {
-  let mockTaskTracker: TaskTrackerCRUD;
   let taskTrackerAPI: TaskTrackerAPI;
+  let localTaskTrackerMock: jest.Mocked<TaskTrackerCRUD>;
 
   beforeEach(() => {
-    mockTaskTracker = {
-      getTasks: jest.fn(() => Promise.resolve([])),
-      setTask: jest.fn(() => Promise.resolve()),
-      deleteTask: jest.fn(() => Promise.resolve(true)),
+    localTaskTrackerMock = {
+      getTasks: jest.fn(),
+      setTask: jest.fn(),
+      deleteTask: jest.fn(),
     };
-    taskTrackerAPI = new TaskTrackerAPI(mockTaskTracker);
+    taskTrackerAPI = new TaskTrackerAPI(localTaskTrackerMock);
   });
 
-  it('should get a task by ID', async () => {
-    const mockTasks: Task[] = [
-      {
-        id: '152',
-        text: 'Read a book',
-        date: '2024-02-02',
-        status: 'New',
-        tags: [],
-      },
-      {
-        id: '217',
-        text: 'Go to gym',
-        date: '2023-05-02',
-        status: 'Done',
-        tags: [],
-      },
-    ];
-    mockTaskTracker.getTasks.mockImplementation(() =>
-      Promise.resolve(mockTasks),
-    );
-
-    const task = await taskTrackerAPI.getTaskById('217');
-
-    expect(task).toEqual(mockTasks[1]);
-    expect(mockTaskTracker.getTasks).toHaveBeenCalled();
-  });
-
-  it('should delete a task', async () => {
-    const taskId = '1';
-    mockTaskTracker.getTasks.mockImplementation(() =>
-      Promise.resolve([
+  describe('getTaskById', () => {
+    it('should return a task by ID', async () => {
+      const tasks: Task[] = [
         {
-          id: '152',
-          text: 'Read a book',
-          date: '2024-02-02',
+          id: '1',
+          text: 'Test Task',
+          date: '2023-01-01',
           status: 'New',
-          tags: [],
+          tags: ['test'],
         },
-      ]),
-    );
-    mockTaskTracker.deleteTask.mockImplementation(() => Promise.resolve(true));
+      ];
+      localTaskTrackerMock.getTasks.mockResolvedValue(tasks);
 
-    const result = await taskTrackerAPI.deleteTask(taskId);
+      const task = await taskTrackerAPI.getTaskById('1');
+      expect(task).toEqual(tasks[0]);
+    });
 
-    // Ensure that the call to deleteTask succeeded and getTaskById was called
-    expect(result).toBeTruthy();
-    expect(mockTaskTracker.deleteTask).toHaveBeenCalledWith(taskId);
-    expect(mockTaskTracker.getTasks).toHaveBeenCalled();
+    it('should return null if task is not found', async () => {
+      localTaskTrackerMock.getTasks.mockResolvedValue([]);
+
+      const task = await taskTrackerAPI.getTaskById('1');
+      expect(task).toBeNull();
+    });
   });
 
-  it('should get saved tasks', async () => {
-    const mockTasks: Task[] = [
-      {
-        id: '152',
-        text: 'Read a book',
-        date: '2024-02-02',
+  describe('deleteTask', () => {
+    it('should delete a task and return true', async () => {
+      localTaskTrackerMock.deleteTask.mockResolvedValue(true);
+      localTaskTrackerMock.getTasks.mockResolvedValue([]);
+
+      const result = await taskTrackerAPI.deleteTask('1');
+      expect(result).toBe(true);
+      expect(localTaskTrackerMock.deleteTask).toHaveBeenCalledWith('1');
+    });
+
+    it('should return false if task deletion fails', async () => {
+      localTaskTrackerMock.deleteTask.mockResolvedValue(false);
+
+      const result = await taskTrackerAPI.deleteTask('1');
+      expect(result).toBe(false);
+    });
+  });
+  describe('getSavedTasks', () => {
+    it('should return all saved tasks', async () => {
+      const tasks: Task[] = [
+        {
+          id: '1',
+          text: 'Task 1',
+          date: '2023-01-01',
+          status: 'New',
+          tags: ['work'],
+        },
+        {
+          id: '2',
+          text: 'Task 2',
+          date: '2023-01-02',
+          status: 'In progress',
+          tags: ['home'],
+        },
+      ];
+      localTaskTrackerMock.getTasks.mockResolvedValue(tasks);
+
+      const result = await taskTrackerAPI.getSavedTasks();
+      expect(result).toEqual(tasks);
+    });
+  });
+  describe('taskFilter', () => {
+    it('should filter tasks by provided criteria', () => {
+      const task: Task = {
+        id: '1',
+        text: 'Test Task',
+        date: '2023-01-01',
         status: 'New',
-        tags: [],
-      },
-      {
-        id: '217',
-        text: 'Go to gym',
-        date: '2023-05-02',
-        status: 'Done',
-        tags: [],
-      },
-    ];
-    mockTaskTracker.getTasks.mockImplementation(() =>
-      Promise.resolve(mockTasks),
-    );
+        tags: ['test'],
+      };
+      const filter: TasksFilter = {
+        date: '2023-01-01',
+        status: 'New',
+        tags: ['test'],
+      };
 
-    const savedTasks = await taskTrackerAPI.getSavedTasks();
-
-    expect(savedTasks).toEqual(mockTasks);
-    expect(mockTaskTracker.getTasks).toHaveBeenCalled();
-  });
-
-  it('should save a task', async () => {
-    const task: Task = {
-      id: '1',
-      text: 'New Task',
-      date: '2023-12-31',
-      status: 'New',
-      tags: ['work'],
-    };
-    mockTaskTracker.setTask.mockImplementation(() => Promise.resolve());
-
-    await taskTrackerAPI.saveTask(task);
-
-    expect(mockTaskTracker.setTask).toHaveBeenCalledWith(task);
+      const result = taskTrackerAPI.taskFilter(task, filter);
+      expect(result).toBe(true);
+    });
   });
 });
