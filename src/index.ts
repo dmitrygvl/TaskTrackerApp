@@ -1,4 +1,6 @@
-import "./styles/style.scss";
-import { sumTs } from "./modules/sum";
+import './styles/index.scss';
+import { runApp } from './modules/runApp';
 
-sumTs(2, 4);
+const app = document.getElementById('app') as HTMLElement;
+
+runApp(app);

@@ -40,6 +40,7 @@
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^23.0.1",
     "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.32",
@@ -68,5 +69,9 @@
     ],
     "*.{css,scss,md,yml, json, html}": "prettier . --write",
     "*.{css, scss}": "stylelint --fix"
+  },
+  "dependencies": {
+    "core-js": "^3.34.0",
+    "normalize.css": "^8.0.1"
   }
 }
